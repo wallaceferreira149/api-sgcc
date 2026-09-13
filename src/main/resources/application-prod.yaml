@@ -1,0 +1,29 @@
+spring:
+  config:
+    activate:
+      # Ativa quando profile "prod" estiver ativo
+      on-profile: prod
+
+  datasource:
+    # URL de conexão com PostgreSQL
+    url: jdbc:postgresql://localhost:5432/minha_api
+    # Usuário do banco (ideal usar variável de ambiente futuramente)
+    username: postgres
+    # Senha do banco (evitar hardcode em produção real)
+    password: postgres
+    # Driver do PostgreSQL
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      # Apenas valida o schema existente (não altera nada)
+      ddl-auto: validate
+    # Não exibe SQL em produção
+    show-sql: false
+
+logging:
+  level:
+    # Só registra erros globais (reduz overhead e ruído)
+    root: ERROR
+    # Logs importantes da aplicação
+    com.suaempresa: INFO

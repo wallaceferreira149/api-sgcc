@@ -1,3 +1,17 @@
+# Define configurações comuns a todos os perfis
 spring:
   application:
-    name: api-sgcc
+    # Nome da aplicação (usado em logs, monitoramento, etc.)
+    name: sgcc-api
+  profiles:
+    active: dev
+  flyway:
+    enabled: true
+
+build:
+  version: 0.0.0
+
+# Configuração do servidor embutido
+server:
+  # Porta padrão da aplicação
+  port: 8080
