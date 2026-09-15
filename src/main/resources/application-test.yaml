@@ -1,0 +1,30 @@
+spring:
+  config:
+    activate:
+      # Ativa configuração quando profile "test" está ativo
+      on-profile: test
+
+  datasource:
+    # Banco H2 em memória para testes
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+    # Driver do H2
+    driver-class-name: org.h2.Driver
+    # Usuário padrão
+    username: sa
+    # Senha padrão
+    password:
+
+  jpa:
+    hibernate:
+      # Cria e destrói o schema a cada execução de teste
+      ddl-auto: create-drop
+    # Não exibe SQL (para não poluir logs)
+    show-sql: false
+
+logging:
+  level:
+    # Mostra apenas avisos e erros globais
+    root: WARN
+    # Logs básicos da aplicação para sua EMPRESA
+    dev.arcanus: INFO
+  ``
