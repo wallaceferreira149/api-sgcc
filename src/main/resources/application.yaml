@@ -15,3 +15,7 @@ build:
 server:
   # Porta padrão da aplicação
   port: 8080
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) [%thread] %cyan(%logger{36}) - %msg%n"

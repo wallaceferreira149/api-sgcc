@@ -27,4 +27,5 @@ logging:
     root: WARN
     # Logs básicos da aplicação para sua EMPRESA
     dev.arcanus: INFO
-  ``
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] %logger{36} - %msg%n"

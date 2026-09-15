@@ -21,10 +21,15 @@ spring:
       # Caminho de acesso ao console
       path: /h2-console
 
+  #desativar momentaneamente enquanto se consntroi as entidades.
+  flyway:
+    enabled: false
+
   jpa:
     hibernate:
-      # Valida se o schema criado com flyway está correto
-      ddl-auto: validate
+      # validate: se o schema criado com flyway está correto
+      # create-drop: Na fase de concepção, para não criar uma migration a cada interação
+      ddl-auto: create-drop
     # Mostra queries SQL no console
     show-sql: true
     properties:
@@ -49,3 +54,4 @@ logging:
     org.hibernate.SQL: INFO
     # Mostra parâmetros das queries
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+  console: "%clr(%d{HH:mm:ss.SSS}){faint} %highlight(%-5level) %clr([%thread]){cyan} %clr(%logger{36}){blue} - %msg%n"
