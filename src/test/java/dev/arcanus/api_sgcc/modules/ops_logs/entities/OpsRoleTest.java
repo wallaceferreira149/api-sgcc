@@ -1,4 +1,4 @@
-package dev.arcanus.api_sgcc.modules.ops_currency.entities;
+package dev.arcanus.api_sgcc.modules.ops_logs.entities;
 
 import org.junit.jupiter.api.Test;
 
