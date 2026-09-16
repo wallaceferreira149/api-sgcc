@@ -3,6 +3,7 @@ package dev.arcanus.api_sgcc.modules.ops_logs.value_objects;
 import jakarta.persistence.Embeddable;
 
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 @Embeddable
@@ -40,26 +41,18 @@ public class IFF implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof IFF)) return false;
-        IFF iff = (IFF) o;
-        return Objects.equals(codigo, iff.codigo);
+        if (!(o instanceof IFF iff)) return false;
+        return Objects.equals(code, iff.code);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(codigo);
-    }
-
-
-
-
-
-}
+        return Objects.hash(code);
     }
 
     @Override
     public String toString() {
-        return codigo;
+        return code;
     }
 
 }

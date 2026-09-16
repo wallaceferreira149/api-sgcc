@@ -3,9 +3,12 @@ package dev.arcanus.api_sgcc.modules.ops_logs.entities;
 import dev.arcanus.api_sgcc.domain.entities.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "ops_locales")
@@ -13,6 +16,9 @@ public class OpsLocale extends BaseEntity {
 
     @Column(nullable = false,  unique = true)
     private String locale;
+
+    @OneToMany(mappedBy = "locale")
+    private Set<OperationalLog> operationalLogs = new HashSet<OperationalLog>();
 
     protected OpsLocale() {}
 
