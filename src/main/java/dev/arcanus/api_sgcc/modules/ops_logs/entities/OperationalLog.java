@@ -1,6 +1,7 @@
 package dev.arcanus.api_sgcc.modules.ops_logs.entities;
 
 import dev.arcanus.api_sgcc.domain.entities.BaseEntityAudit;
+import dev.arcanus.api_sgcc.modules.ops_logs.value_objects.FlightControl;
 import dev.arcanus.api_sgcc.modules.ops_logs.value_objects.IFF;
 import jakarta.persistence.*;
 
@@ -34,15 +35,32 @@ public class OperationalLog extends BaseEntityAudit {
     @JoinColumn(name = "ops_role_id", nullable = false)
     private OpsRole opsRole;
 
+    @Column(nullable = false)
     private boolean isReal;
 
+    @Column(nullable = false)
+    private Instant opslogDate;
+
+    @Column(nullable = false)
     private int quantityRegistred;
 
-    private String airCraftCallSign;
+    @Embedded
+    private FlightControl flightControl;
 
-    private String airCraftType;
+    protected OperationalLog() {}
 
-    private int airCraftQuantity;
+    public OperationalLog(
+        OpsUser operator,
+        OpsLocale locale,
+        OpsRole roleFor,
+        InstructionOrder instructionOrder,
+        boolean isReal,
+        int quantityRegistred
+    ) {
+        validateCrew();
+
+
+    }
 
     private void setAirCraftQuantity(int quantity) {
         if (quantity <= 0) {
@@ -51,15 +69,13 @@ public class OperationalLog extends BaseEntityAudit {
         this.airCraftQuantity = quantity;
     }
 
-    @Embedded
-    private IFF airCraftIFF;
 
-    private Instant controlStartedAt;
+    private void validateCrew() {
+        if (operator.equals(assistant) || operator.equals(instructor) || (assistant != null && assistant.equals(instructor))) {
+            throw new IllegalArgumentException("Um usuário não pode desempenhar mais de uma função para uma mesma manutenção operacional");
+        }
 
-    private Instant controlFinishedAt;
-
-    private int controlDuration;
-
+    }
 
 
 }

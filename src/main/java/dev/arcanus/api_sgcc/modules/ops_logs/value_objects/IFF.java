@@ -1,5 +1,6 @@
 package dev.arcanus.api_sgcc.modules.ops_logs.value_objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
 import java.io.Serializable;
@@ -12,6 +13,7 @@ public class IFF implements Serializable {
 
     private static final Pattern OCTAL_4_DIGITS = Pattern.compile("^[0-7]{4}$");
 
+    @Column(name = "iff_code", length = 4)
     private String code;
 
     protected IFF() {}
@@ -21,6 +23,7 @@ public class IFF implements Serializable {
     }
 
     public static IFF of(String code) {
+        validateCode(code);
         return new IFF(code);
     }
 
