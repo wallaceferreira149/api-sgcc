@@ -1,5 +1,11 @@
 package dev.arcanus.api_sgcc.infra.config.exception;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ProblemDetail;
+
+import java.net.URI;
+import java.time.Instant;
+
 public abstract class SGCCException extends RuntimeException {
 
     private final HttpStatus status;

@@ -35,7 +35,7 @@ public abstract class BaseEntityAudit extends BaseEntity {
         return createdAt;
     }
 
-    public Long getCreatedBy;
+    public Long getCreatedBy() { return createdBy; };
 
     public Instant getUpdatedAt() {
         return updatedAt;

@@ -61,4 +61,49 @@ class OpsRoleTest {
         role.setDescription(" Comando Aéreo ");
         assertEquals("comando aéreo", role.getDescription());
     }
+
+    @Test
+    void shouldNotCreateRoleWithNullName() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new OpsRole(null, 120L);
+        });
+    }
+
+    @Test
+    void shouldNotCreateRoleWithBlankName() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new OpsRole("   ", 120L);
+        });
+    }
+
+    @Test
+    void shouldNotCreateRoleWithNullDaysToExpire() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new OpsRole("CC", null);
+        });
+    }
+
+    @Test
+    void shouldNotCreateRoleWithZeroDaysToExpire() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new OpsRole("CC", 0L);
+        });
+    }
+
+    @Test
+    void shouldNotCreateRoleWithNegativeDaysToExpire() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new OpsRole("CC", -30L);
+        });
+    }
+
+    @Test
+    void shouldNormalizeNameToUpperCase() {
+        OpsRole role = new OpsRole(
+                " cc ",
+                90L
+        );
+
+        assertEquals("CC", role.getName());
+    }
 }

@@ -154,4 +154,3 @@ public class ValueObject {
         return value;
     }
 }
-```
