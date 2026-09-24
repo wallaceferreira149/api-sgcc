@@ -2,7 +2,7 @@
 
 | Termo | Significado |
 |-------|-------------|
-| GCC | Centro de Controle de Espaço Aéreo |
+| GCC | Grupo de Comunicações e Controle |
 | Esquadrão (1º ao 5º/1º GCC) | Unidade organizacional com escopo próprio |
 | Ops Log | Registro operacional de turno/missão |
 | IFF | Código octal de 4 dígitos (`^[0-7]{4}$`), VO `IFF` |
