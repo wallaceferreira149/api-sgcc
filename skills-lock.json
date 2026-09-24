@@ -1,6 +1,12 @@
 {
   "version": 1,
   "skills": {
+    "321-frameworks-spring-boot-testing-unit-tests": {
+      "source": "jabrena/plinth",
+      "sourceType": "github",
+      "skillPath": "skills/321-frameworks-spring-boot-testing-unit-tests/SKILL.md",
+      "computedHash": "4caf3916ce389420408655e1e9cbcd94fc494f436527a0d6501320f569740631"
+    },
     "git-commit": {
       "source": "github/awesome-copilot",
       "sourceType": "github",
