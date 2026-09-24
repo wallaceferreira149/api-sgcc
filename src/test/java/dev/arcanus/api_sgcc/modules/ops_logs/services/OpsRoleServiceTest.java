@@ -45,7 +45,7 @@ class OpsRoleServiceTest {
         @DisplayName("Deve criar uma qualificação operacional com sucesso")
         void shouldCreateOpsRoleSucessfully() {
 
-            when(opsRoleRepository.existsByName(validRequest.name()))
+            when(opsRoleRepository.existsByNameIgnoreCase("CC"))
                 .thenReturn(Boolean.FALSE);
 
             when(opsRoleMapper.toEntity(validRequest))
@@ -60,6 +60,7 @@ class OpsRoleServiceTest {
             assertEquals(validOpsRole.getName(), opsRoleCreated.getName());
             assertEquals(validOpsRole.getDaysToExpire(), opsRoleCreated.getDaysToExpire());
             assertEquals("", opsRoleCreated.getDescription());
+            verify(opsRoleRepository).existsByNameIgnoreCase("CC");
             verify(opsRoleRepository).save(validOpsRole);
         }
 
@@ -67,7 +68,7 @@ class OpsRoleServiceTest {
         @DisplayName("Não deve criar qualificação operacional com nome já cadastrado")
         void shouldNotCreateOpsRoleWithDuplicatedName() {
 
-            when(opsRoleRepository.existsByName(validRequest.name()))
+            when(opsRoleRepository.existsByNameIgnoreCase("CC"))
                 .thenReturn(Boolean.TRUE);
 
             assertThrows(SGCCResourceAlreadyExists.class,

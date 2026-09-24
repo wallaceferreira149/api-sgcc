@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface OpsRoleRepository extends JpaRepository<OpsRole, Long> {
-    boolean existsByName(String opsRole);
+    boolean existsByNameIgnoreCase(String name);
 }

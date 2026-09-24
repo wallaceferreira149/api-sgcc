@@ -69,17 +69,17 @@ public class OpsRole extends BaseEntity {
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         OpsRole opsRole = (OpsRole) o;
-        return getId() == opsRole.getId() && getName().equals(opsRole.getName()) && Objects.equals(getDescription(), opsRole.getDescription());
+        return Objects.equals(getId(), opsRole.getId())
+            && Objects.equals(getName(), opsRole.getName())
+            && Objects.equals(getDescription(), opsRole.getDescription());
     }
 
     @Override
     public int hashCode() {
-        int result = this.getId().hashCode();
-        result = 31 * result + getName().hashCode();
-        result = 31 * result + Objects.hashCode(getDescription());
-        return result;
+        return Objects.hash(getId(), getName(), getDescription());
     }
 }

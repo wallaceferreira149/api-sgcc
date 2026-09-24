@@ -22,7 +22,9 @@ public class OpsRoleService {
     @Transactional
     public OpsRole create(OpsRoleRequestDto dto) {
 
-        if (repository.existsByName(dto.name())) {
+        String normalizedName = dto.name().trim().toUpperCase();
+
+        if (repository.existsByNameIgnoreCase(normalizedName)) {
             throw new SGCCResourceAlreadyExists("Essa qualificação operacional já foi cadastrada");
         }
 
