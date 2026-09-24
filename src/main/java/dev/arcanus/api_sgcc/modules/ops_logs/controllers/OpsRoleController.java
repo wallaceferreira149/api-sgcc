@@ -13,7 +13,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 
 @RestController
-@RequestMapping("/api/v1/opsroles")
+@RequestMapping("/api/v1/ops-roles")
 public class OpsRoleController {
 
     private final OpsRoleService opsRoleService;
@@ -28,13 +28,12 @@ public class OpsRoleController {
     public ResponseEntity<OpsRoleResponseDto> createOpsRole(
         @RequestBody @Valid OpsRoleRequestDto body,
         UriComponentsBuilder uriBuilder
-        ) {
+    ) {
         OpsRole opsRole = opsRoleService.create(body);
 
-        URI uri = uriBuilder.path("/api/v1/opsroles/{id}")
+        URI uri = uriBuilder.path("/api/v1/ops-roles/{id}")
             .buildAndExpand(opsRole.getId()).toUri();
 
         return ResponseEntity.created(uri).body(mapper.toResponse(opsRole));
-
-        }
+    }
 }
