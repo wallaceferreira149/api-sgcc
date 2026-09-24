@@ -7,6 +7,9 @@ spring:
     active: dev
   flyway:
     enabled: true
+  mvc:
+    problemdetails:
+      enabled: true
 
 build:
   version: 0.0.0
