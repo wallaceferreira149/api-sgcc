@@ -147,7 +147,17 @@ public class OperationalLog extends BaseEntityAudit {
 
 //    VALIDAÇÕES
     private void validateCrew() {
-        if (operator.equals(assistant) || operator.equals(instructor) || (assistant != null && assistant.equals(instructor))) {
+        validateCrew(operator, assistant, instructor);
+    }
+
+    private static void validateCrew(
+            OpsUser operator,
+            OpsUser assistant,
+            OpsUser instructor
+    ) {
+        if (operator.equals(assistant)
+                || operator.equals(instructor)
+                || (assistant != null && assistant.equals(instructor))) {
             throw new IllegalArgumentException("Um usuário não pode desempenhar mais de uma função para uma mesma manutenção operacional");
         }
     }
@@ -172,9 +182,9 @@ public class OperationalLog extends BaseEntityAudit {
             throw new IllegalArgumentException("Um dos parâmetros deve ser preenchido.");
         }
 
+        validateCrew(operator, assistant, instructor);
         this.assistant = assistant;
         this.instructor = instructor;
-        validateCrew();
     }
 
 
