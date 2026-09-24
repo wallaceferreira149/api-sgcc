@@ -2,6 +2,8 @@ package dev.arcanus.api_sgcc.modules.ops_logs.value_objects;
 
 import jakarta.persistence.Embeddable;
 
+import java.util.Objects;
+
 /*
  * ============================================================
  * VALUE OBJECT — ESQUELETO
