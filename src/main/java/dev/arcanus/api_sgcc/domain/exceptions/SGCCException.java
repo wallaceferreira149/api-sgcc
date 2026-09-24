@@ -1,4 +1,4 @@
-package dev.arcanus.api_sgcc.infra.config.exception;
+package dev.arcanus.api_sgcc.domain.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
@@ -8,9 +8,9 @@ import java.time.Instant;
 
 public abstract class SGCCException extends RuntimeException {
 
-    private final HttpStatus status;
-    private final String title;
-    private final String detail;
+    private HttpStatus status;
+    private String title;
+    private String detail;
 
     protected SGCCException(HttpStatus status, String title, String detail) {
         super(detail);
@@ -33,6 +33,8 @@ public abstract class SGCCException extends RuntimeException {
         problemDetail.setProperty("timestamp", Instant.now());
         return problemDetail;
     }
+
+    protected SGCCException() {}
 
     private String slugify(String text) {
         return text.toLowerCase()
