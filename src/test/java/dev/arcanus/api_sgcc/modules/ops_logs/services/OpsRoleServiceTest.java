@@ -2,6 +2,7 @@ package dev.arcanus.api_sgcc.modules.ops_logs.services;
 
 import dev.arcanus.api_sgcc.domain.exceptions.SGCCResourceAlreadyExists;
 import dev.arcanus.api_sgcc.modules.ops_logs.dtos.OpsRoleRequestDto;
+import dev.arcanus.api_sgcc.modules.ops_logs.dtos.OpsRoleResponseDto;
 import dev.arcanus.api_sgcc.modules.ops_logs.entities.OpsRole;
 import dev.arcanus.api_sgcc.modules.ops_logs.mappers.OpsRoleMapper;
 import dev.arcanus.api_sgcc.modules.ops_logs.repositories.OpsRoleRepository;
@@ -51,15 +52,17 @@ class OpsRoleServiceTest {
             when(opsRoleMapper.toEntity(validRequest))
                 .thenReturn(validOpsRole);
 
+            when(opsRoleMapper.toResponse(validOpsRole))
+                .thenReturn(new OpsRoleResponseDto(null, "CC", ""));
+
             when(opsRoleRepository.save(any(OpsRole.class)))
                 .thenAnswer(invocation -> invocation.getArgument(0));
 
-            OpsRole opsRoleCreated = opsRoleService.create(validRequest);
+            OpsRoleResponseDto opsRoleCreated = opsRoleService.create(validRequest);
 
             assertNotNull(opsRoleCreated);
-            assertEquals(validOpsRole.getName(), opsRoleCreated.getName());
-            assertEquals(validOpsRole.getDaysToExpire(), opsRoleCreated.getDaysToExpire());
-            assertEquals("", opsRoleCreated.getDescription());
+            assertEquals(validOpsRole.getName(), opsRoleCreated.name());
+            assertEquals("", opsRoleCreated.description());
             verify(opsRoleRepository).existsByNameIgnoreCase("CC");
             verify(opsRoleRepository).save(validOpsRole);
         }
@@ -78,5 +81,21 @@ class OpsRoleServiceTest {
         }
     }
 
+    @Nested
+    @DisplayName("Caso de uso: listar qualificações operacionais")
+    class ListOpsRolesUseCase {
+
+        private OpsRole validOpsRoleCC = new OpsRole("CC", 120L);
+        private OpsRole validOpsRoleAJCC = new OpsRole("ajcc", 120L);
+        private OpsRole validOpsRoleCOAM = new OpsRole("coam", 60L);
+
+
+//        @Test
+//        @DisplayName("Deve listar todos as qualificações operacionais")
+//        void shouldListAllOpsRoles() {
+//            when(opsRoleService.findAll())
+//                .then
+//        }
+    }
 
 }

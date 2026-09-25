@@ -56,14 +56,20 @@ public class OpsRole extends BaseEntity {
         this.name = name.trim().toUpperCase();
     }
 
-    public void setDaysToExpire(Long daysToExpire) {
+    public void updateDetails(String name, String description, Long daysToExpire) {
+        setName(name);
+        setDescription(description);
+        setDaysToExpire(daysToExpire);
+    }
+
+    private void setDaysToExpire(Long daysToExpire) {
         if (daysToExpire == null || daysToExpire <= 0 ) {
             throw new IllegalArgumentException("A duração deve ser um período positivo.");
         }
         this.daysToExpire = daysToExpire;
     }
 
-    public void setDescription(String description) {
+    private void setDescription(String description) {
         this.description = description != null ? description.trim().toLowerCase() : "";
     }
 

@@ -11,7 +11,7 @@ public class OpsRoleMapper {
 
     public OpsRoleResponseDto toResponse(OpsRole entity) {
         String description = entity.getDescription() == null ? "" : entity.getDescription();
-        return new OpsRoleResponseDto(entity.getName(), description);
+        return new OpsRoleResponseDto(entity.getId(), entity.getName(), description);
     }
 
     public OpsRole toEntity(OpsRoleRequestDto dto) {

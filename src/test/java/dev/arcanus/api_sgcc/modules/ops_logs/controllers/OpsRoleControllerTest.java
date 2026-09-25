@@ -3,7 +3,6 @@ package dev.arcanus.api_sgcc.modules.ops_logs.controllers;
 import dev.arcanus.api_sgcc.domain.exceptions.SGCCResourceAlreadyExists;
 import dev.arcanus.api_sgcc.modules.ops_logs.dtos.OpsRoleRequestDto;
 import dev.arcanus.api_sgcc.modules.ops_logs.dtos.OpsRoleResponseDto;
-import dev.arcanus.api_sgcc.modules.ops_logs.entities.OpsRole;
 import dev.arcanus.api_sgcc.modules.ops_logs.mappers.OpsRoleMapper;
 import dev.arcanus.api_sgcc.modules.ops_logs.services.OpsRoleService;
 import org.junit.jupiter.api.DisplayName;
@@ -12,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
-import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.containsString;
@@ -45,12 +43,8 @@ class OpsRoleControllerTest {
     @Test
     @DisplayName("Deve responder 201 Created com header Location")
     void shouldReturn201CreatedWithLocationHeader() throws Exception {
-        OpsRole created = new OpsRole("cc", "controle de trafego aereo", 120L);
-        ReflectionTestUtils.setField(created, "id", 7L);
-
-        when(opsRoleService.create(any(OpsRoleRequestDto.class))).thenReturn(created);
-        when(opsRoleMapper.toResponse(created))
-            .thenReturn(new OpsRoleResponseDto("CC", "controle de trafego aereo"));
+        when(opsRoleService.create(any(OpsRoleRequestDto.class)))
+            .thenReturn(new OpsRoleResponseDto(7L, "CC", "controle de trafego aereo"));
 
         mockMvc.perform(post(ENDPOINT)
                 .contentType(MediaType.APPLICATION_JSON)

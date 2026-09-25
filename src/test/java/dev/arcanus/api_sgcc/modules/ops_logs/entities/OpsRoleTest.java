@@ -37,28 +37,31 @@ class OpsRoleTest {
     void shouldNotAllowWrongDaysToExpire() {
         OpsRole role = new OpsRole();
 
-        IllegalArgumentException notNullDaysToExpire = assertThrows(IllegalArgumentException.class, () -> {
-            role.setDaysToExpire(null);
-        });
-        IllegalArgumentException notNegativeDaysToExpire = assertThrows(IllegalArgumentException.class, () -> {
-            role.setDaysToExpire(-1L);
-        });
-        IllegalArgumentException notZeroDaysToExpire = assertThrows(IllegalArgumentException.class, () -> {
-            role.setDaysToExpire(0L);
-        });
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> role.updateDetails("CC", null, null)
+        );
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> role.updateDetails("CC", null, -1L)
+        );
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> role.updateDetails("CC", null, 0L)
+        );
     }
 
     @Test
-    void shouldNotAllowWrongDescription(){
-        OpsRole role = new OpsRole();
+    void shouldNormalizeDescription() {
+        OpsRole role = new OpsRole("CC", 120L);
 
-        role.setDescription(null);
+        role.updateDetails("CC", null, 120L);
         assertEquals("", role.getDescription());
 
-        role.setDescription("   ");
+        role.updateDetails("CC", "   ", 120L);
         assertEquals("", role.getDescription());
 
-        role.setDescription(" Comando Aéreo ");
+        role.updateDetails("CC", " Comando Aéreo ", 120L);
         assertEquals("comando aéreo", role.getDescription());
     }
 
