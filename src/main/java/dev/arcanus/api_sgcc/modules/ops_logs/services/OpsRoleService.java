@@ -36,18 +36,20 @@ public class OpsRoleService {
     }
 
     @Transactional(readOnly = true)
-    public List<OpsRole> findAll() {
-        return repository.findAll();
+    public List<OpsRoleResponseDto> findAll() {
+        return repository.findAll().stream().map(mapper::toResponse).toList();
     }
 
     @Transactional(readOnly = true)
-    public OpsRole findById(Long id) {
-        return repository.findById(id)
-                .orElseThrow(() ->
-                        new SGCCResourceNotFoundException(
-                                "Qualificação operacional não encontrada"
-                        )
-                );
+    public OpsRoleResponseDto findById(Long id) {
+        return mapper.toResponse(
+            repository.findById(id)
+                    .orElseThrow(() ->
+                            new SGCCResourceNotFoundException(
+                                    "Qualificação operacional não encontrada"
+                            )
+                    )
+        );
     }
 
     @Transactional

@@ -22,10 +22,10 @@ public class OpsRole extends BaseEntity {
 
     public OpsRole() {}
 
-    public OpsRole(String name, Long daysToExpire) {
-        setName(name);
-        setDaysToExpire(daysToExpire);
-    }
+//    public OpsRole(String name, Long daysToExpire) {
+//        setName(name);
+//        setDaysToExpire(daysToExpire);
+//    }
 
     public OpsRole(String name, String description, Long daysToExpire) {
         setName(name);

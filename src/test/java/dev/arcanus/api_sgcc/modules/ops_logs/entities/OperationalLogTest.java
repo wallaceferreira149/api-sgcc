@@ -47,7 +47,7 @@ class OperationalLogTest {
 
     @BeforeEach
     void setUp() {
-        opsRole = new OpsRole("CC", 120L);
+        opsRole = new OpsRole("CC", null, 120L);
         operator = new OpsUser("operator@fab.mil.br", opsRole);
         assistant = new OpsUser("assistant@fab.mil.br", opsRole);
         instructor = new OpsUser("instructor@fab.mil.br", opsRole);

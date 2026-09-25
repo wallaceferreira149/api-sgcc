@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class OpsUserTest {
 
     private OpsRole validRole() {
-        return new OpsRole("CC", 120L);
+        return new OpsRole("CC", null, 120L);
     }
 
     @Test

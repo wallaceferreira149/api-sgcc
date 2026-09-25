@@ -44,16 +44,14 @@ public class OpsRoleController {
 
     @GetMapping
     public ResponseEntity<List<OpsRoleResponseDto>> findAllOpsRole() {
-        List<OpsRoleResponseDto> allOpsRole = opsRoleService.findAll().stream().map(mapper::toResponse).toList();
-        return ResponseEntity.ok(allOpsRole);
+        return ResponseEntity.ok(opsRoleService.findAll());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<OpsRoleResponseDto> findOpsRoleById(
         @PathVariable @Min(value = 1, message = "O Id da qualificação operacional é obrigatório") Long id
     ){
-        OpsRole opsRole = opsRoleService.findById(id);
-        return ResponseEntity.ok(mapper.toResponse(opsRole));
+        return ResponseEntity.ok(opsRoleService.findById(id));
     }
 
     @PutMapping("/{id}")

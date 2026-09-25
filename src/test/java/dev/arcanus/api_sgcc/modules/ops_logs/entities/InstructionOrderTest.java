@@ -14,6 +14,7 @@ class InstructionOrderTest {
     void setUp() {
         validRole = new OpsRole(
                 "ctam",
+                null,
                 60L
         );
     }

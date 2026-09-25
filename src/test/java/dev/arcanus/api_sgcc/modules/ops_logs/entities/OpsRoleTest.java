@@ -10,6 +10,7 @@ class OpsRoleTest {
     void shouldCreateRoleSuccessfully() {
         OpsRole role = new OpsRole(
                 "cc",
+                null,
                 120L
         );
 
@@ -53,7 +54,7 @@ class OpsRoleTest {
 
     @Test
     void shouldNormalizeDescription() {
-        OpsRole role = new OpsRole("CC", 120L);
+        OpsRole role = new OpsRole("CC", null, 120L);
 
         role.updateDetails("CC", null, 120L);
         assertEquals("", role.getDescription());
@@ -68,35 +69,35 @@ class OpsRoleTest {
     @Test
     void shouldNotCreateRoleWithNullName() {
         assertThrows(IllegalArgumentException.class, () -> {
-            new OpsRole(null, 120L);
+            new OpsRole(null, null, 120L);
         });
     }
 
     @Test
     void shouldNotCreateRoleWithBlankName() {
         assertThrows(IllegalArgumentException.class, () -> {
-            new OpsRole("   ", 120L);
+            new OpsRole("   ", null,  120L);
         });
     }
 
     @Test
     void shouldNotCreateRoleWithNullDaysToExpire() {
         assertThrows(IllegalArgumentException.class, () -> {
-            new OpsRole("CC", null);
+            new OpsRole("CC", null, null);
         });
     }
 
     @Test
     void shouldNotCreateRoleWithZeroDaysToExpire() {
         assertThrows(IllegalArgumentException.class, () -> {
-            new OpsRole("CC", 0L);
+            new OpsRole("CC",null, 0L);
         });
     }
 
     @Test
     void shouldNotCreateRoleWithNegativeDaysToExpire() {
         assertThrows(IllegalArgumentException.class, () -> {
-            new OpsRole("CC", -30L);
+            new OpsRole("CC", null, -30L);
         });
     }
 
@@ -104,6 +105,7 @@ class OpsRoleTest {
     void shouldNormalizeNameToUpperCase() {
         OpsRole role = new OpsRole(
                 " cc ",
+                null,
                 90L
         );
 
