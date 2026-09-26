@@ -53,7 +53,7 @@ public class OpsRole extends BaseEntity {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("A qualificação operacional é obrigatória.");
         }
-        this.name = name.trim().toUpperCase();
+        this.name = name.trim().toUpperCase(Locale.ROOT);
     }
 
     public void updateDetails(String name, String description, Long daysToExpire) {
@@ -70,7 +70,7 @@ public class OpsRole extends BaseEntity {
     }
 
     private void setDescription(String description) {
-        this.description = description != null ? description.trim().toLowerCase() : "";
+        this.description = description != null ? description.trim().toLowerCase(Locale.ROOT) : "";
     }
 
     @Override

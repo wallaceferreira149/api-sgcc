@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Locale;
 
 @Service
 public class OpsRoleService {
@@ -26,7 +27,7 @@ public class OpsRoleService {
     @Transactional
     public OpsRoleResponseDto create(OpsRoleRequestDto request) {
 
-        String normalizedName = request.name().trim().toUpperCase();
+        String normalizedName = request.name().trim().toUpperCase(Locale.ROOT);
 
         if (repository.existsByNameIgnoreCase(normalizedName)) {
             throw new SGCCResourceAlreadyExists("Essa qualificação operacional já foi cadastrada");
