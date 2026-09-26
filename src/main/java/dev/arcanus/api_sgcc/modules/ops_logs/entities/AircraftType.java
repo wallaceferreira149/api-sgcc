@@ -5,6 +5,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
+import java.util.Locale;
 import java.util.Objects;
 
 @Entity
@@ -17,15 +18,18 @@ public class AircraftType extends BaseEntity {
     protected AircraftType() {}
 
     public  AircraftType(String code) {
-        normalize(code);
+        setCode(code);
     }
 
-    private void normalize(String code) {
+    private void setCode(String code) {
         if (code == null || code.isBlank()) {
             throw new IllegalArgumentException("O tipo de aeronave não pode ser vazio.");
         }
+        this.code = code.trim().toUpperCase(Locale.ROOT);
+    }
 
-        this.code = code.trim().toUpperCase();
+    public void update(String code) {
+        setCode(code);
     }
 
     public String getCode() {
