@@ -21,6 +21,13 @@ spring:
       # Caminho de acesso ao console
       path: /h2-console
 
+  # Catalogos de seed do ambiente local (nao sobem para test/prod).
+  # O H2 em memoria e recriado a cada boot, entao o seed roda sempre sobre a base vazia.
+  sql:
+    init:
+      mode: always
+      data-locations: classpath:db/seed/aircraft-types.sql
+
   #desativar momentaneamente enquanto se consntroi as entidades.
   flyway:
     enabled: false
@@ -30,6 +37,9 @@ spring:
       # validate: se o schema criado com flyway está correto
       # create-drop: Na fase de concepção, para não criar uma migration a cada interação
       ddl-auto: create-drop
+    # Executa o seed (spring.sql.init) depois do Hibernate criar o schema;
+    # sem isso o create-drop descarta os dados inseridos.
+    defer-datasource-initialization: true
     # Mostra queries SQL no console
     show-sql: true
     properties:
