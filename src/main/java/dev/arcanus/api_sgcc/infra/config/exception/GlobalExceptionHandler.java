@@ -23,7 +23,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(SGCCException.class)
     public ResponseEntity<ProblemDetail> handleSGCCException(SGCCException ex) {
-        log.error("Exceção de negócio tratada: {}", ex.getMessage(), ex);
+        log.error("Exceção de negócio SGCC: {}", ex.getMessage(), ex);
         return ResponseEntity.status(ex.getStatus()).body(ex.toProblemDetail());
     }
 
