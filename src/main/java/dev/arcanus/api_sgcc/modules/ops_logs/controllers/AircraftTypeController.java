@@ -45,21 +45,21 @@ public class AircraftTypeController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AircraftTypeResponseDto> getAircraftTypeById(@PathVariable @NotNull Long id) {
+    public ResponseEntity<AircraftTypeResponseDto> getAircraftTypeById(@PathVariable Long id) {
         return ResponseEntity.ok(service.findById(id));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<AircraftTypeResponseDto> updateAircraftType(
-        @PathVariable @NotNull Long id,
+        @PathVariable Long id,
         @RequestBody @Valid AircraftTypeRequestDto request) {
         return ResponseEntity.ok(service.update(id, request));
     }
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteAircraftType(@PathVariable @NotNull Long id) {
+    public ResponseEntity<Void> deleteAircraftType(@PathVariable Long id) {
         service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 }

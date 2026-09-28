@@ -26,6 +26,10 @@ public class OpsLocale extends BaseEntity {
         setLocale(locale);
     }
 
+    public void update(String locale) {
+        setLocale(locale);
+    }
+
     private void setLocale(String locale) {
         if (locale == null || locale.isBlank()) {
             throw new IllegalArgumentException("A localidade do registro operacional não pode ser vazia.");

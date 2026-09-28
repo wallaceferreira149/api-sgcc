@@ -1,4 +1,9 @@
 package dev.arcanus.api_sgcc.modules.ops_logs.dtos;
 
-public class OpsLocaleRequestDto {
+import jakarta.validation.constraints.NotBlank;
+
+public record OpsLocaleRequestDto(
+    @NotBlank
+    String locale
+) {
 }
