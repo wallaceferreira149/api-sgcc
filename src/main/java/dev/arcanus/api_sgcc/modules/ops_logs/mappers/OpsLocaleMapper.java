@@ -3,7 +3,9 @@ package dev.arcanus.api_sgcc.modules.ops_logs.mappers;
 import dev.arcanus.api_sgcc.modules.ops_logs.dtos.OpsLocaleRequestDto;
 import dev.arcanus.api_sgcc.modules.ops_logs.dtos.OpsLocaleResponseDto;
 import dev.arcanus.api_sgcc.modules.ops_logs.entities.OpsLocale;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OpsLocaleMapper {
 
     public OpsLocaleResponseDto toResponse(OpsLocale opsLocale) {
