@@ -5,7 +5,7 @@ public record InstructionOrderResponseDto(
     String code,
     int quantity,
     String description,
-    Long ops_role_id,
-    String ops_role_name
+    Long opsRoleId,
+    String opsRoleName
 ) {
 }

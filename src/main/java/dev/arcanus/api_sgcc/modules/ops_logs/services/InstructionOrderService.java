@@ -39,7 +39,7 @@ public class InstructionOrderService {
             throw new SGCCResourceAlreadyExists("O código da Ordem de Instrunção já foi cadastrado");
         }
 
-        OpsRole opsRole = opsRoleRepository.findById(request.ops_role_id())
+        OpsRole opsRole = opsRoleRepository.findById(request.opsRoleId())
             .orElseThrow(() -> new SGCCResourceNotFoundException("Qualificação Operacional não encontrada"));
 
         entity.assignRole(opsRole);
@@ -78,8 +78,8 @@ public class InstructionOrderService {
             request.description()
         );
 
-        if (request.ops_role_id() != entity.getRoleFor().getId()) {
-            OpsRole opsRole = opsRoleRepository.findById(request.ops_role_id())
+        if (request.opsRoleId() != entity.getRoleFor().getId()) {
+            OpsRole opsRole = opsRoleRepository.findById(request.opsRoleId())
                 .orElseThrow(() -> new SGCCResourceNotFoundException("Qualificação Operacional não encontrada"));
             entity.assignRole(opsRole);
         }

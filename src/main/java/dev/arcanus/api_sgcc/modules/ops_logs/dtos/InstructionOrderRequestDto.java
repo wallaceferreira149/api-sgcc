@@ -12,6 +12,6 @@ public record InstructionOrderRequestDto(
     @Nullable
     String description,
     @NotNull
-    Long ops_role_id
+    Long opsRoleId
 ) {
 }
