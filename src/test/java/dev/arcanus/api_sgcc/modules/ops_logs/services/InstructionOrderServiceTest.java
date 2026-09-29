@@ -73,8 +73,8 @@ class InstructionOrderServiceTest {
             assertEquals(validResponse.code(), result.code());
             assertEquals(validResponse.quantity(), result.quantity());
             assertEquals(validResponse.description(), result.description());
-            assertEquals(validResponse.ops_role_id(), result.ops_role_id());
-            assertEquals(validResponse.ops_role_name(), result.ops_role_name());
+            assertEquals(validResponse.opsRoleId(), result.opsRoleId());
+            assertEquals(validResponse.opsRoleName(), result.opsRoleName());
 
             verify(instructionOrderRepository).existsByCode("OI-001");
             verify(instructionOrderMapper).toEntity(validRequest);
@@ -182,7 +182,7 @@ class InstructionOrderServiceTest {
             // Then
             assertEquals(validResponse.id(), result.id());
             assertEquals(validResponse.code(), result.code());
-            assertEquals(validResponse.ops_role_name(), result.ops_role_name());
+            assertEquals(validResponse.opsRoleName(), result.opsRoleName());
 
             verify(instructionOrderRepository).findById(1L);
             verify(instructionOrderMapper).toResponse(validInstructionOrder);
@@ -265,8 +265,8 @@ class InstructionOrderServiceTest {
             InstructionOrderResponseDto result = instructionOrderService.update(1L, requestWithNewRole);
 
             // Then
-            assertEquals(2L, result.ops_role_id());
-            assertEquals("AJCC", result.ops_role_name());
+            assertEquals(2L, result.opsRoleId());
+            assertEquals("AJCC", result.opsRoleName());
 
             verify(instructionOrderRepository).findById(1L);
             verify(opsRoleRepository).findById(2L);

@@ -58,7 +58,7 @@ class InstructionOrderControllerTest {
                 "code": "OI-001",
                 "quantity": 10,
                 "description": "Ordem de Instrução 1",
-                "ops_role_id": 1
+                "opsRoleId": 1
             }
             """;
 
@@ -87,8 +87,8 @@ class InstructionOrderControllerTest {
                 .andExpect(jsonPath("$.code").value("OI-001"))
                 .andExpect(jsonPath("$.quantity").value(10))
                 .andExpect(jsonPath("$.description").value("Ordem de Instrução 1"))
-                .andExpect(jsonPath("$.ops_role_id").value(1))
-                .andExpect(jsonPath("$.ops_role_name").value("CC"));
+                .andExpect(jsonPath("$.opsRoleId").value(1))
+                .andExpect(jsonPath("$.opsRoleName").value("CC"));
 
         verify(instructionOrderService).create(VALID_REQUEST);
         verifyNoInteractions(instructionOrderMapper);
@@ -102,7 +102,7 @@ class InstructionOrderControllerTest {
                 {
                     "code": "   ",
                     "quantity": 0,
-                    "ops_role_id": null
+                    "opsRoleId": null
                 }
                 """;
 
@@ -192,8 +192,8 @@ class InstructionOrderControllerTest {
                 .andExpect(jsonPath("$.code").value("OI-001"))
                 .andExpect(jsonPath("$.quantity").value(10))
                 .andExpect(jsonPath("$.description").value("Ordem de Instrução 1"))
-                .andExpect(jsonPath("$.ops_role_id").value(1))
-                .andExpect(jsonPath("$.ops_role_name").value("CC"));
+                .andExpect(jsonPath("$.opsRoleId").value(1))
+                .andExpect(jsonPath("$.opsRoleName").value("CC"));
 
         verify(instructionOrderService).findById(INSTRUCTION_ORDER_ID);
         verifyNoInteractions(instructionOrderMapper);
@@ -240,8 +240,8 @@ class InstructionOrderControllerTest {
                 .andExpect(jsonPath("$.code").value("OI-001-UPDATED"))
                 .andExpect(jsonPath("$.quantity").value(15))
                 .andExpect(jsonPath("$.description").value("Atualizada"))
-                .andExpect(jsonPath("$.ops_role_id").value(1))
-                .andExpect(jsonPath("$.ops_role_name").value("CC"));
+                .andExpect(jsonPath("$.opsRoleId").value(1))
+                .andExpect(jsonPath("$.opsRoleName").value("CC"));
 
         verify(instructionOrderService).update(INSTRUCTION_ORDER_ID, VALID_REQUEST);
         verifyNoInteractions(instructionOrderMapper);
@@ -255,7 +255,7 @@ class InstructionOrderControllerTest {
                 {
                     "code": "",
                     "quantity": -1,
-                    "ops_role_id": 0
+                    "opsRoleId": 0
                 }
                 """;
 
