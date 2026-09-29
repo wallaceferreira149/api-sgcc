@@ -55,7 +55,7 @@ class OpsLocaleServiceTest {
     }
 
     @Nested
-    @DisplayName("create")
+    @DisplayName("UseCase: Create OpsLocale")
     class Create {
 
         @Test
@@ -124,7 +124,7 @@ class OpsLocaleServiceTest {
     }
 
     @Nested
-    @DisplayName("listAll")
+    @DisplayName("UseCase: Listar todas localidades")
     class ListAll {
 
         @Test
@@ -168,7 +168,7 @@ class OpsLocaleServiceTest {
     }
 
     @Nested
-    @DisplayName("findById")
+    @DisplayName("UseCase: Listar localidade por ID")
     class FindById {
 
         @Test
@@ -216,7 +216,7 @@ class OpsLocaleServiceTest {
     }
 
     @Nested
-    @DisplayName("update")
+    @DisplayName("UseCase: Atualizar localidade")
     class Update {
 
         @Test
@@ -286,7 +286,7 @@ class OpsLocaleServiceTest {
     }
 
     @Nested
-    @DisplayName("delete")
+    @DisplayName("UseCase: Deletar localidade")
     class Delete {
 
         @Test
