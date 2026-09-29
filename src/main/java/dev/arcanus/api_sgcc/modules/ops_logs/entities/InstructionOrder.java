@@ -31,6 +31,11 @@ public class InstructionOrder extends BaseEntity {
         assignRole(roleFor);
     }
 
+    public InstructionOrder(String code, int quantity, String description) {
+        setCode(code);
+        setQuantity(quantity);
+        setDescription(description);
+    }
     // --- MÉTODOS DE NEGÓCIO E ALTERAÇÃO DE ESTADO ---
 
     public void updateDetails(String code, int quantity, String description) {
