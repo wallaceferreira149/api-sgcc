@@ -63,11 +63,10 @@ public class OpsRoleController {
     }
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteOpsRole(
+    public ResponseEntity<Void> deleteOpsRole(
         @PathVariable @Min(value = 0, message = "O Id da qualificação operacional é obrigatório") Long id
     ) {
         opsRoleService.delete(id);
+        return ResponseEntity.noContent().build();
     }
-
 }

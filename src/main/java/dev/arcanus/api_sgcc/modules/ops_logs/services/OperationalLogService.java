@@ -7,14 +7,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class OperationalLogService {
 
-    private final OperationalLogRepository opsLogepository;
-    private final OperationalLogMapper opsLogMapper;
-
-
-
-    @Transactional
-    public OperationalLogResponseDto create(OperationalLogRequestDto request) {
-
-    }
+//    private final OperationalLogRepository opsLogepository;
+//    private final OperationalLogMapper opsLogMapper;
+//
+//
+//
+//    @Transactional
+//    public OperationalLogResponseDto create(OperationalLogRequestDto request) {
+//
+//    }
 
 }
