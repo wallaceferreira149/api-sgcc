@@ -35,6 +35,22 @@ public class FlightInfo {
         return new FlightInfo(aircraftCallSign, aircraftType, aircraftQuantity, aircraftIFF);
     }
 
+    public String getAircraftCallsign() {
+        return aircraftCallsign;
+    }
+
+    public int getAircraftQuantity() {
+        return aircraftQuantity;
+    }
+
+    public IFF getAircraftIFF() {
+        return aircraftIFF;
+    }
+
+    public AircraftType getAircraftType() {
+        return aircraftType;
+    }
+
     private static void validate(int aircraftQuantity) {
         if (aircraftQuantity <= 0 || aircraftQuantity > 99) {
             throw new IllegalArgumentException("A quantidade de aeronaves deve estar entre 1 e 99.");

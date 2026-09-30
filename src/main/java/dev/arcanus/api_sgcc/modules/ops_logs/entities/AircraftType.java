@@ -17,7 +17,7 @@ public class AircraftType extends BaseEntity {
 
     protected AircraftType() {}
 
-    public  AircraftType(String code) {
+    protected   AircraftType(String code) {
         setCode(code);
     }
 

@@ -67,6 +67,10 @@ public class OperationalLog extends BaseEntityAudit {
         checkQuantity();
     }
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
     public static final class Builder {
         private OpsUser operator, assistant, instructor;
         private OpsLocale locale;
